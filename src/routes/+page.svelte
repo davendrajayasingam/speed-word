@@ -13,6 +13,8 @@
           console.log(word, definition);
 
           if (!word || !definition) return setCurrentWord();
+          
+          if (!word && !definition) throw new Error('offline!')
 
           currWord.set({
             word,
