@@ -32,7 +32,7 @@
     let wordInterval = setInterval(setCurrentWord, 10000);
 
     let timerInterval = setInterval(() => {
-      if (remainingTime > 0) {
+      if (remainingTime > 0 && !isOffline) {
         remainingTime -= 1;
       }
     }, 1000);
