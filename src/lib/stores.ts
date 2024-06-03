@@ -12,10 +12,6 @@ function createPersistedStore(key: string, startValue: Word)
             initialValue = JSON.parse(storedValue);
         }
     }
-    else
-    {
-        console.log('local storage is undefined')
-    }
 
     const { subscribe, set } = writable(initialValue);
 

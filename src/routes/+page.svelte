@@ -10,28 +10,33 @@
     getRandomWord()
       .then((word) =>
         getDefinition(word).then((definition) => {
-          console.log(word, definition);
+          console.log("Received", word, definition);
 
           if (!word || !definition) return setCurrentWord();
-          
-          if (!word && !definition) throw new Error('offline!')
+
+          if (word === $currWord.word) {
+            throw new Error("Offline!");
+          }
 
           currWord.set({
             word,
             definition,
           });
 
+          isOffline = false;
+
           remainingTime = 10;
+          setTimeout(setCurrentWord, 10000);
         })
       )
-      .then(() => (isOffline = false))
-      .catch(() => (isOffline = true));
+      .catch(() => {
+        isOffline = true;
+        setTimeout(setCurrentWord, 1000);
+      });
   }
 
   onMount(() => {
     setCurrentWord();
-
-    let wordInterval = setInterval(setCurrentWord, 10000);
 
     let timerInterval = setInterval(() => {
       if (remainingTime > 0 && !isOffline) {
@@ -39,17 +44,18 @@
       }
     }, 1000);
 
-    return () => {
-      clearInterval(wordInterval);
-      clearInterval(timerInterval);
-    };
+    return () => clearInterval(timerInterval);
   });
 </script>
 
 <div class="container">
   <div>
-    <h2 style="color: #d1d5db; text-align: center; font-style: italic;">Speed Word!</h2>
-    <p style="color: #6b7280; text-align: center; margin-top: -1rem; font-style: italic;">
+    <h2 style="color: #d1d5db; text-align: center; font-style: italic;">
+      Speed Word!
+    </h2>
+    <p
+      style="color: #6b7280; text-align: center; margin-top: -1rem; font-style: italic;"
+    >
       Learn a new word every 10 seconds.
     </p>
   </div>
