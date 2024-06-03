@@ -26,5 +26,5 @@
 <slot  />
 
 <svelte:head>
-  <title>PWA Test Using SW</title>
+  <title>Speed Word!</title>
 </svelte:head>
