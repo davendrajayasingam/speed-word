@@ -1,0 +1,26 @@
+{
+    "name": "Speed Word",
+    "short_name": "Speed Word",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000",
+    "theme_color": "#ff3e00",
+    "description": "Learn a new word every 10 seconds.",
+    "icons": [
+        {
+            "src": "/pwa-64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
