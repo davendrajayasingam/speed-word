@@ -56,7 +56,7 @@
     <p
       style="color: #6b7280; text-align: center; margin-top: -1rem; font-style: italic;"
     >
-      Learn a new word every 10 seconds.
+      Discover a new word every 10 seconds.
     </p>
   </div>
 

@@ -6,7 +6,7 @@
     "scope": "/",
     "background_color": "#000",
     "theme_color": "#ff3e00",
-    "description": "Learn a new word every 10 seconds.",
+    "description": "Discover a new word every 10 seconds.",
     "icons": [
         {
             "src": "/pwa-64x64.png",
