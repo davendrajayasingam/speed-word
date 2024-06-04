@@ -3,16 +3,16 @@
 // Guide from https://kit.svelte.dev/docs/service-workers#type-safety
 //  and from https://www.youtube.com/watch?v=_wiOcdEVgks&ab_channel=JoyofCode
 
-import { build, files, version } from '$service-worker'
+import { build, files, prerendered, version } from '$service-worker'
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`
 
 const ASSETS = [
     ...build, // the app itself
-    ...files  // everything in `static`
+    ...files,  // everything in `static`
+    ...prerendered // prerendered pages
 ]
-
 
 self.addEventListener('install', event =>
 {
@@ -78,7 +78,7 @@ self.addEventListener('fetch', event =>
 
             if (response.status === 200)
             {
-                await cache.put(event.request, response.clone())
+                cache.put(event.request, response.clone())
             }
 
             return response
