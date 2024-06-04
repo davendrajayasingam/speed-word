@@ -42,7 +42,6 @@ self.addEventListener('activate', event =>
 })
 
 
-
 self.addEventListener('fetch', event =>
 {
     // ignore POST requests etc
@@ -79,7 +78,7 @@ self.addEventListener('fetch', event =>
 
             if (response.status === 200)
             {
-                cache.put(event.request, response.clone())
+                await cache.put(event.request, response.clone())
             }
 
             return response
@@ -94,7 +93,7 @@ self.addEventListener('fetch', event =>
 
             // if there's no cache, then just error out
             // as there is nothing we can do to respond to this request
-            throw new Error(event.request.url)
+            throw new Error('Offline! Please connect to the internet to continue.')
         }
     }
 
