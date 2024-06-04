@@ -10,7 +10,7 @@
         newWorker?.addEventListener("statechange", () => {
           if (newWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
-              alert("New content is available. Click OK to refresh.");
+              alert("New content is available. App will refresh.");
               newWorker.postMessage({ type: "SKIP_WAITING" });
               window.location.reload();
             }

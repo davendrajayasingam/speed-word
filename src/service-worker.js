@@ -94,7 +94,7 @@ self.addEventListener('fetch', event =>
 
             // if there's no cache, then just error out
             // as there is nothing we can do to respond to this request
-            throw new Error('offline and no cache:', JSON.stringify(event.request), '<<cache>>', JSON.stringify(ASSETS))
+            throw new Error(event.request.url)
         }
     }
 
