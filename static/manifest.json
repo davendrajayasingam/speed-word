@@ -3,6 +3,7 @@
     "short_name": "Speed Word",
     "start_url": "/",
     "display": "standalone",
+    "scope": "/",
     "background_color": "#000",
     "theme_color": "#ff3e00",
     "description": "Learn a new word every 10 seconds.",
