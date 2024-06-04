@@ -42,6 +42,7 @@ self.addEventListener('activate', event =>
 })
 
 
+
 self.addEventListener('fetch', event =>
 {
     // ignore POST requests etc
@@ -93,7 +94,7 @@ self.addEventListener('fetch', event =>
 
             // if there's no cache, then just error out
             // as there is nothing we can do to respond to this request
-            throw err
+            throw new Error('offline and no cache')
         }
     }
 
@@ -101,6 +102,9 @@ self.addEventListener('fetch', event =>
 })
 
 
+// Immediately activate the new service worker when there's an update and it's installed
+// Even though we call window.location.reload(), the new service worker won't take control until the tab is closed and reopened
+// This is a workaround to make the new service worker take control immediately
 self.addEventListener('message', event =>
 {
     if (event.data && event.data.type === 'SKIP_WAITING')
